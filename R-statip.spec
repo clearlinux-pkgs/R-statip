@@ -4,21 +4,23 @@
 #
 Name     : R-statip
 Version  : 0.2.0
-Release  : 3
+Release  : 4
 URL      : https://cran.r-project.org/src/contrib/statip_0.2.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/statip_0.2.0.tar.gz
 Summary  : Statistical Functions for Probability Distributions and
 Group    : Development/Tools
 License  : GPL-3.0
 Requires: R-statip-lib = %{version}-%{release}
-Requires: R-bazar
-Requires: R-clue
-Requires: R-distrEx
-Requires: R-kimisc
+Requires: R-assertthat
+Requires: R-cli
+Requires: R-memoise
+BuildRequires : R-assertthat
 BuildRequires : R-bazar
+BuildRequires : R-cli
 BuildRequires : R-clue
 BuildRequires : R-distrEx
 BuildRequires : R-kimisc
+BuildRequires : R-memoise
 BuildRequires : buildreq-R
 
 %description
@@ -41,10 +43,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1550863470
+export SOURCE_DATE_EPOCH=1552835577
 
 %install
-export SOURCE_DATE_EPOCH=1550863470
+export SOURCE_DATE_EPOCH=1552835577
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -80,8 +82,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library statip|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  statip || :
 
 
 %files
@@ -106,10 +107,10 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/statip/help/statip.rdx
 /usr/lib64/R/library/statip/html/00Index.html
 /usr/lib64/R/library/statip/html/R.css
-/usr/lib64/R/library/statip/libs/symbols.rds
+/usr/lib64/R/library/statip/tests/testthat.R
+/usr/lib64/R/library/statip/tests/testthat/test-mfv.R
 
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/R/library/statip/libs/statip.so
 /usr/lib64/R/library/statip/libs/statip.so.avx2
-/usr/lib64/R/library/statip/libs/statip.so.avx512
