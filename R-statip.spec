@@ -4,7 +4,7 @@
 #
 Name     : R-statip
 Version  : 0.2.0
-Release  : 10
+Release  : 11
 URL      : https://cran.r-project.org/src/contrib/statip_0.2.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/statip_0.2.0.tar.gz
 Summary  : Statistical Functions for Probability Distributions and
