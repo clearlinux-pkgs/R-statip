@@ -4,7 +4,7 @@
 #
 Name     : R-statip
 Version  : 0.2.3
-Release  : 15
+Release  : 16
 URL      : https://cran.r-project.org/src/contrib/statip_0.2.3.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/statip_0.2.3.tar.gz
 Summary  : Statistical Functions for Probability Distributions and
@@ -12,9 +12,7 @@ Group    : Development/Tools
 License  : GPL-3.0
 Requires: R-statip-lib = %{version}-%{release}
 Requires: R-clue
-Requires: R-distrEx
 BuildRequires : R-clue
-BuildRequires : R-distrEx
 BuildRequires : buildreq-R
 
 %description
@@ -31,21 +29,22 @@ lib components for the R-statip package.
 
 %prep
 %setup -q -c -n statip
+cd %{_builddir}/statip
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1574049853
+export SOURCE_DATE_EPOCH=1589787636
 
 %install
-export SOURCE_DATE_EPOCH=1574049853
+export SOURCE_DATE_EPOCH=1589787636
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
